@@ -1,0 +1,62 @@
+A.  In AndroidManifest.xml check for 'uses-permission AD_ID' and if found then
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" tools:node="remove"/>
+
+B.  Add 'signingConfigs' above to the 'buildTypes' in 'build.gradle.kts'(app) 
+    and also use 'isMinifyEnabled = true' and 'debugSymbolLevel' if possible , given as below
+	signingConfigs{
+        	create("release"){
+            	keyAlias = "digivahan"
+            	keyPassword = "digivahan@android"
+            	storeFile = File("C:\\Users\\aadit\\StudioProjects\\digivahan-android\\app\\src\\main\\digivahan.txt")
+            	storePassword ="digivahan@android"
+        	}
+    	}
+
+    	buildTypes {
+        	release {
+            	isMinifyEnabled = true
+            	proguardFiles(
+                	getDefaultProguardFile("proguard-android-optimize.txt"),
+                	"proguard-rules.pro"
+            	)
+            	ndk {
+                     debugSymbolLevel = "SYMBOL_TABLE"
+            	}
+            }
+        }
+
+C. Generate Signed App Bundle:
+ 	1. Build>Generate Signed App Bundle 
+ 	2. select 'Android App Bundle'>[Next]
+ 	3. 'Key store path' [create new]
+ 	4. fill all of 'New Key Store' form as below steps and [OK]
+ 	5. then fill other info at 'Generate Signed App Bundle' form and [Next]
+ 	6. select 'release' and [Create]
+
+	Key store path: ('New Key Store' form)
+ 	Key store path : C:\Users\aadit\StudioProjects\digivahan-android\app\src\main\digivahan.jks
+ 	// Note - Key store path is nothing but the location of app_name.jks file on which you are working mostly we store it to the 'src\main' folder
+ 	// Note - Store app_name.txt file to the same folder where you are saving app_name.jks file
+ 	Password : app_name@android | Confirm : app_name@android
+ 	Alias : app_name
+ 	Password : app_name@android | Confirm : app_name@android
+ 	Full Name : Owner Name
+ 	Organizational Unit : 'leave it'
+ 	Organization : Owner's Org
+ 	City : Organization's city
+ 	State : Organization's state
+ 	Country Code : 91
+
+D. Check for AD_ID in generated app bundle's manifest file
+
+E. Test the .aab app bundle by converting it in .apk and installing in local device:
+	REQUIRED - bundletool-all-1.18.1.jar TOOL , download it first and use its location in below terminal codes
+
+	java -jar "C:\Users\aadit\Downloads\bundletool-all-1.18.1.jar" build-apks --bundle="C:\Users\aadit\StudioProjects\digivahan-android\app\release\DigiVahan-	release.aab" --output="C:\Users\aadit\StudioProjects\digivahan-android\app\release\DigiVahan.apks" --ks="C:\Users\aadit\StudioProjects\digivahan-android\app\src	\main\digivahan.jks" --ks-key-alias=digivahan --ks-pass=pass:digivahan@android
+
+	INSTALL - using below code in terminal
+	java -jar "C:\Users\aadit\Downloads\bundletool-all-1.18.1.jar" install-apks --apks="C:\Users\aadit\StudioProjects\digivahan-android\app\release\DigiVahan.apks"
+
+
+F. Release 2(1.2)

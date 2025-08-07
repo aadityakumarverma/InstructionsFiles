@@ -1,0 +1,44 @@
+Daily Status Report @ "04 July 2025"
+
+Dear Sir,
+
+Please have a look at today's status:
+
+Done Tasks:
+
+ SurfoSport:
+ a) League Details API & UI= 2hr Done
+ b) Teams Details API & UI= 1hr 30min Done
+ c) League List UI= Done
+ d) Player Former Teams List API & UI= 1hr 30min Done
+ e) Player Honour list API & UI= 1hr 30min Done
+
+ c) League Table Details API & UI= 1hr 30min
+
+
+ Code Pushed on BitBucket
+
+Pending Tasks:
+  a)
+
+Thanks,
+Aaditya Verma
+
+  working on Event details API
+  taking lunch break
+
+Good Night Sir
+
+  working on Data safety fields
+  taking lunch break
+
+ SurfoSport:
+  a) League Details API & UI= 2hr
+  b) League Table Details API & UI= 1hr 30min
+  c) Player Honour list API & UI= 1hr 30min
+  d) Player Former Teams List API & UI= 1hr 30min
+  d) Teams Details API & UI= 1hr 30min
+  a) Venue Details API & UI= 2hr
+  b) List Leagues based on sports & country = 2hr
+  c) Sports Season List API & UI= 2hr
+  i) Sports Details API UI
